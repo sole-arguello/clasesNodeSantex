@@ -1,0 +1,75 @@
+express: es un framework, incorpora herramientas de manejo http, usa una estructura de middlewares
+
+https://refactoring.guru/
+
+middlewares: es una funcion que se ejecuta antes o despues del manejo de una ruta, no 
+finaliza el ciclo de llamada hasta que llama al metodo next para avanzar con la cadena
+
+Tipos:
+- de aplicacion
+
+- de ruta: actuan sobre la ruta o recurso
+
+- de manejo de errores: manejo de exepciones
+
+- incorporados a express: por ejemplo el parseo
+
+- de terceros: autenticacion, que le usuario este autenticado antes de llegar a la ruta
+
+
+-----------------------------------------------------------------------------------------
+
+Middleware 
+
+- a nivel ruta:
+router get('/', () =>, ()=> .........)
+
+
+- manejo de errores: podemos preguntar por algo en particular, por ej si no existe un archivo,
+si no hago el manejo yo express hace uno en forma automatica
+
+errorHandle = (err, req, res, next)
+
+- incorporados a express
+express.json()
+urlencoded() - se instala
+static - seintala - puede poveer img, html, files
+
+- de terceros
+ejemplo passport pra resolver autenticacion y seguridad
+
+validator para validar los datos de la ruta antes de guardar en BD
+Session para que el server mantenga las sessiones
+
+----------------------------------------------------------------------------------------------
+Ruteo 
+
+- Usando app 
+- Usando router
+
+
+---------------------------------------------------
+
+Arquitectura (por convencion)
+
+Rutas: manejan las rutas, metodos, y la accion del controller
+ 
+controllers: interactua entre la peticion que llegue a la ruta
+ y lo que deve devolver nuestro sistema
+
+Services: 
+Van encapsulando la logica de negocio, osea lo que hace 
+mi sistema para funcionar
+
+middlewares:
+
+models:
+
+providers: no posee la logica de negocio, sino la llamada de servicios externos
+
+utils: todo lo que sea trasversal a todas las capas del proyecto
+
+helpers: funciones de ayudas de diferentes partes de la aplicacion
+
+
+

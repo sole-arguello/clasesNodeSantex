@@ -1,0 +1,101 @@
+fs -> guardar - leer - escribir archivos en el disco o interactuar con 
+la existencia o no del archivo
+los permisos, crear directorios y ver si existe 
+
+split -> lee la cantidad de lineas del archivo
+
+readFile -> lee el archivo, recibe un archivo, el tipo y una callback con el err y la data
+
+if err y throw err, split que recorre la las lineas y devuelve la cantidad de lineas 
+
+readFileSync -> interactua, recibe solo un archivo y el tipo, es asincrona
+
+existsSync -> verifica si existe el archivo, si existe devuelve true 
+y hace en el bloque lo que necesite
+
+appendFileSync -> le paso el archivo y lo que le quiero introducir al mismo
+
+writeFile -> le paso el archivo, el contenido a escribir en una variable, y una callback
+que contiene el err y la data, if err, throw err y console de la data
+
+mkdirSync -> crea una carpeta
+
+------------------- Ejemplo introduccion clase 1 ----------------------------
+
+
+const _ = require('lodash')
+
+
+console.log("Helo World");
+
+console.log(`AWS_KEY: ${process.env.AWS_KEY}. Process Var`)
+
+console.log(`Un array: ${_.sortBy[1, 2, 3, 4, 5, 6].join(",")}`);
+
+
+const fs = require('fs')
+
+
+
+console.log('Inicio')
+fs.readFile('package.json', 'utf-8', (err, data)=>{
+    if (err) console.error('hubo un error', error)
+    console.log('data:\n', data)
+})//leer
+
+console.log('Linea 2')
+try{
+    const data = fs.readFileSync('package.json', 'utf-8')//me permite interactuar
+    console.log('data Sync:\n', data)
+}catch(err) {
+    console.error('Hubo un error', err)
+}
+
+--------------------------------------------------------------------------
+//si el archivo no existe, defino un contenido, y escribo el archivo
+//con la callback verifico si hay un error, e imprimo
+// const content = "Contenido para este archivo \n Con salto de linea"
+
+// fs.writeFile("archivo.txt", content, (err, data) => {
+//     if(err) throw err
+//     console.log(data)
+//     // leo el archivo y el tipo, verifica si hay un error
+//     // hace un split de cada linea, recorriendolas y poniendo cada linea 
+//     //y el numero de las mismas
+//     fs.readFile('archivo.txt', 'utf-8', (err, data)=>{
+//         if (err) throw err
+//         let lineN = 0
+//         data.split("\n").forEach((line) => {
+//             console.log(`Linea ${lineN}`, line)
+//             lineN ++ 
+//         })
+        
+//     })
+// })
+
+
+
+// corro la aplicacion con npm run start,la primera vez como no existe
+// lo crea (writeFile seguido de readFile) y con el contenido que le envio en la data, 
+//la segunda vez como existe lo que hace es leer (writeFile) el archivo y 
+//agregar lo que le envie (existsSync)
+
+
+//---------------- otra forma -----------------
+
+const content = "Contenido para este archivo \n Con salto de linea"
+
+try{
+    const data = fs.writeFileSync("archivo.txt", content)
+    console.log(data)
+    data = fs.readFileSync('archivo.txt', 'utf-8')
+    let lineN = 0
+    data.split("\n").forEach((line) => {
+        console.log(`Linea ${lineN}`, line)
+        lineN ++ 
+    })
+    fs.mkdirSync("lala")
+    
+}catch (err){
+    throw err
+}

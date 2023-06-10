@@ -1,0 +1,49 @@
+Protocolo http
+
+GET pedir info al servidor sobre un recurso
+
+POST enviar info al servidor
+
+PUT enviar info sobre un recurso especifico al servidor
+
+DELETE eliminar un recurso del servidor
+
+Codigos de respuesta:
+
+-> informacion (100 - 199)
+-> exito (200 - 299)
+-> redireccion (300 - 399)
+-> error del cte (400 - 499)
+-> error del servidor (500 - 599)
+
+200 ok
+201 Created
+202 Accepted
+203 No Content
+
+300 Multiple Choice
+301 Moved Permanente
+302 Found 
+303 Not Modified
+
+400 Bad Request
+401 UnautHorized 
+403 Forbidden
+404 Not Found
+
+500 Internal Server error
+501 Not Implemented
+502 Bad Gotewoy
+503 Service Un
+
+---------------------------------------------------
+
+libreria:
+
+createServer -> sirve para crear el servidor, como para hacer llamadas
+
+recibe un midel que interpreta peticiones y maneja la respuesta
+Dentro de la funcion le decimos que queremos hacer cuando nos llegue la peticion
+
+end -> que termine el mje
+lisen -> que escuche el puerto 
