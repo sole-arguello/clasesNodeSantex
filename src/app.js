@@ -2,6 +2,9 @@ const express = require('express')
 //llamado de archivos
 const {bookRouter} = require('./routes')
 const loggingMdw = require('./middleware/logging')
+
+//traigo 
+const { initializeDB } = require('./config/db-config')
 const PORT = 8090
 const bookFile = 'book.json'
 
@@ -33,6 +36,8 @@ const errorHandler = (err, req, res) => {
 }
 
 app.use(errorHandler)
-app.listen(PORT, () => {
+
+app.listen(PORT, async () => {
+    await initializeDB()
     console.log(`Server running in ${PORT}`)
 })

@@ -12,3 +12,16 @@ objetos, interactuar con las filas de las tablas es necesario este lenguaje.
 Lo que hace el ORM es trabajar con un objeto, y lo convierte en un modelo de la base de datos
 pudiendo interactuar con este modelo, si tener que usar sql. Hay un ORM para cada lenguanje.
 Encapsulan la conexion con la base de datos y trabajan con los modelos de la misma.
+
+
+ ----------------------------------------------------------------------------------
+
+ En el proyecto creo una carpeta config y dentro un archivo DB que va a configurar
+ sequelize, Trayendo la clase Sequelize y la tengo que instanciar. 
+ 
+ En la clase tenemos opciones como la conexion a la base de datos, y como instanciar la misma o directamente la URL
+ con el protocolo (ej: msql) y tambien un metodo para inizializar la base de datos, donde 'authenticate' se 
+ fija que la conexion sea valida, y con el metodo 'sync' lo que trata de hacer es que todos los modelos 
+ que esten definidos los sincronize con la base de datos.
+
+ 
