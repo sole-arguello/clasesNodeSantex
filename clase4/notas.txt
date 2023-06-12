@@ -1,0 +1,14 @@
+ORM forma de representar los datos o modelos que tenemos en nuestro sistema
+para poder interactuar con ellos en forma de objetos. Mapa Relacional de Objetos.
+
+Mapeo de entidades del sistema a objetos
+
+Libreria Siquelize que permite hacer ORM, basado en promesas. Y sqlite3 es un ng de base de datos
+para tener en memoria.
+
+Para interactuar con la Base de Datos se usa un lenguaje de querys (sql), para poder crear
+objetos, interactuar con las filas de las tablas es necesario este lenguaje.
+
+Lo que hace el ORM es trabajar con un objeto, y lo convierte en un modelo de la base de datos
+pudiendo interactuar con este modelo, si tener que usar sql. Hay un ORM para cada lenguanje.
+Encapsulan la conexion con la base de datos y trabajan con los modelos de la misma.
