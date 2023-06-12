@@ -5,6 +5,8 @@ const loggingMdw = require('./middleware/logging')
 
 //traigo 
 const { initializeDB } = require('./config/db-config')
+const { userModel } = require('./models')
+
 const PORT = 8090
 const bookFile = 'book.json'
 

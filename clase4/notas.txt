@@ -24,4 +24,7 @@ Encapsulan la conexion con la base de datos y trabajan con los modelos de la mis
  fija que la conexion sea valida, y con el metodo 'sync' lo que trata de hacer es que todos los modelos 
  que esten definidos los sincronize con la base de datos.
 
- 
+ Luego creo la carpeta model con user y el index
+ en user traigo la libreria(dataTypes) e uso la instancia para definir los modelos (sequelize)
+ en la funcion 'define' le paso como se va a llamar la entidad, el modelo (Users), como segundo parametro
+ le paso el esquema del objeto
