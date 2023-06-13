@@ -24,7 +24,28 @@ Encapsulan la conexion con la base de datos y trabajan con los modelos de la mis
  fija que la conexion sea valida, y con el metodo 'sync' lo que trata de hacer es que todos los modelos 
  que esten definidos los sincronize con la base de datos.
 
- Luego creo la carpeta model con user y el index
+* Creo la carpeta model con user y el index
  en user traigo la libreria(dataTypes) e uso la instancia para definir los modelos (sequelize)
  en la funcion 'define' le paso como se va a llamar la entidad, el modelo (Users), como segundo parametro
  le paso el esquema del objeto
+
+* En app importo la carpeta models
+
+* Creo la Carpeta providers con user y el index
+
+En ella van las acciones, se encarga de la llamadas a servicios externos (servicio de persistencia: BD) y 
+define logica de negocio. Crea usuarios, va busca los usuarios, cambiar algo del usuario, conoce el usuario
+y sabe interactuar con usuarios. Es elintermediario entre el modelo y el servicio(BD)
+
+En user trabajamos con la entidad usuario en la abstraccion de la tabla usuario
+
+
+------------------------------------------------------------------------------------------
+
+Asociacion 
+
+Tiene uno 
+Pertenece a
+Tiene muchos
+Pertenece a muchos 
+Relacion entre dos modelos y como se relacionan entre ellos

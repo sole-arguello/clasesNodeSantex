@@ -1,11 +1,10 @@
 const express = require('express')
 //llamado de archivos
-const {bookRouter} = require('./routes')
+const {bookRouter, userRouter} = require('./routes')
 const loggingMdw = require('./middleware/logging')
 
 //traigo 
 const { initializeDB } = require('./config/db-config')
-const { userModel } = require('./models')
 
 const PORT = 8090
 const bookFile = 'book.json'
@@ -23,6 +22,7 @@ app.get('/user', (req, res)=>{
 } )
 
 app.use('/book', bookRouter)
+app.use('/user', userRouter)
 
 //a nivel manejo de errores
 const errorHandler = (err, req, res) => {
