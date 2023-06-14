@@ -7,7 +7,7 @@ const createUser = async (user) => {
 }
 
 const getUser = async (userId)=>{
-    //return await userProvider.getUser(userId)
+    // return await userProvider.getUser(userId)
     const user = await userProvider.getUser(userId)
     if(user){
         //logica de negocio
