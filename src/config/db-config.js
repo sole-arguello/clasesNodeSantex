@@ -7,7 +7,7 @@ const sequelize = new Sequelize({
     //storage: '/var./database.sqlite',
 })
 
-const initializeDB = async () => {
+const initializeDB = async () => { 
     try{
         await sequelize.authenticate()
         console.log('Conexion a la base de datos establecida')

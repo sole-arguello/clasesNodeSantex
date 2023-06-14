@@ -49,3 +49,6 @@ Pertenece a
 Tiene muchos
 Pertenece a muchos 
 Relacion entre dos modelos y como se relacionan entre ellos
+
+
+1>32>37
