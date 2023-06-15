@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Ticket } = require('../models')
 
 const createUser = async (user)=> {
     try{
@@ -20,4 +20,14 @@ const getUser = async (userId)=> {
     }
 }
 
-module.exports = { createUser, getUser }
+const createTicket = async (userId, ticket)=> {
+    try{
+        const newTicket = await Ticket.create({...ticket, UserId: userId})
+        return newTicket
+    }catch (error){
+        console.error('Error when creating Ticket',error)
+        throw error
+    }
+}
+
+module.exports = { createUser, getUser, createTicket }
