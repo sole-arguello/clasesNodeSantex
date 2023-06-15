@@ -6,6 +6,8 @@ Mapeo de entidades del sistema a objetos
 Libreria Siquelize que permite hacer ORM, basado en promesas. Y sqlite3 es un ng de base de datos
 para tener en memoria.
 
+Instalacion: npm i sequeleze sqlite3
+
 Para interactuar con la Base de Datos se usa un lenguaje de querys (sql), para poder crear
 objetos, interactuar con las filas de las tablas es necesario este lenguaje.
 
