@@ -1,6 +1,6 @@
 const express = require('express')
 //llamado de archivos
-const {bookRouter, userRouter} = require('./routes')
+const {bookRouter, userRouter, authRouter } = require('./routes')
 const loggingMdw = require('./middleware/logging')
 
 //traigo 
@@ -23,6 +23,9 @@ app.get('/user', (req, res)=>{
 
 app.use('/book', bookRouter)
 app.use('/user', userRouter)
+
+app.use('/login', authRouter)
+
 
 //a nivel manejo de errores
 const errorHandler = (err, req, res) => {
