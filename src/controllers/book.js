@@ -3,6 +3,8 @@ const {bookService} = require('../services')
 const createBookController = (req, res) =>{
 
     try{
+        console.log(`Book create by user with role ${req.user.role}`)
+        
         const newBook = bookService.createBook(req.params.bookId, req.body)
         res.json(newBook)
     }catch (err) {
@@ -11,8 +13,8 @@ const createBookController = (req, res) =>{
 }
 
 const getBookController = (req, res) =>{
-    console.log(`Se econtro libro con id ${req.params.bookId}`)
-    res.json({id: req.params.bookId, name:'Lord'})
+    console.log(`Book found with id ${req.params.bookId}`)
+    res.json({id: req.params.bookId, name:'Lord of the rings'})
 }
 
 

@@ -16,6 +16,12 @@ const getUser = async (userId)=>{
     return user
 }
 
+const validateUser = async (user, pass)=>{
+    const userFound = await userProvider.validateUser({user, pass})
+
+    return userFound
+}
+
 const createTicket = async (userId, ticket)=>{
     // return await userProvider.getUser(userId)
     const user = await userProvider.getUser(userId)
@@ -27,4 +33,4 @@ const createTicket = async (userId, ticket)=>{
     }
     return null
 }
-module.exports = {createUser, getUser, createTicket}
+module.exports = {createUser, getUser, createTicket, validateUser}
