@@ -1,0 +1,67 @@
+Autenticacion
+Es un mecanismo de seguridad que permite al sistema web verificar la identidad del usuario
+antes de otorgarle acceso a ciertos recursos o funcionalidades. 
+
+JWT (externe) El server sabe que estamos logeados pero no guarda la sesion y la informacion
+es una cadena de texto codificada quecontiene informacion en formato JSON
+consta de 3 partes:
+Cabecera  (header) indica el algoritmo de compresion 
+Cuerpo (payload) datos que vamos mandando adentro
+Firma (signature) representa que conocemos la palabra secreta del server
+
+web: jwt.io
+
+Tenemos en enpiont de login, que nos devuelve un Token, el cual desde el front vamos a llevar
+
+para esto necesitamos la libreria, Passport, es un proceso que permite validar y autorizar a los 
+usuarios en una aplicacion web de forma segura y eficiente. 
+
+instalacion: 
+npm i --save passport passport-jwt (se instala en el json en la dependecncias)
+npm i --save jsonwebtoken
+
+Configuracion
+
+En 
+-> app (llamo la ruta)
+
+-> routes (index > creo la ruta y el archivo auth > y configuro express y la libreria 'jsonwebtoken', 
+con la funcion Post donde llamo desde el body el user y el pass y con el
+metodo 'sign' que pide el pailod y el secreto, de esta manera creo el token. Con res.json devuelvo un 
+200 con el token y si no llega a funcionar devuelvo un status y un mensaje de error) 
+
+->  middleware ( todos los req pasan por aca
+    1- traigo la libreria que ayuda a manejar la autenticacion 'passport', 
+    2- la libreria jwt passport para sacar la estrategia de jwt 
+    3- guardo en una variable la funcion para la estrategia , 
+    4- guardo en una variable la funcion que permite que el req llegue y sacar el token de la forma que 
+       nosotros digamos. 
+Luego a passpor le digo 
+1) usa (use()) la estrategia jwt y tengas que interpretar un req Extrae (por medio de su libreria) el 
+jwt con el metodo (osea por medio de una funcion)
+2) el secreto. 
+
+Osea la estrategia va hacer que cuando llegue el req valide si lo que mando el usuario es un jwt valido,
+que la firma sea valida y si es valida llama al callback que recibe:
+1) el 'payload' 
+2) una funcion callback 'done' que recibe si hubo un error y el usuario
+
+Luego en 'jwtValidMDW' crea el meddleware que pueda poner en mis ruta y verificar que el jwt sea valido
+y la secion no quiero guardarla, osea solo veo que el token sea valido
+
+Luego valido si el usuario es admin en la funcion 'userIsAdmin')
+
+-> routes ( llamo la exportacion para:
+POST 'userIsAdmin' solo puede crear
+GET 'jwtValidMDW' solo puede leer
+y a cada ruta le agrego entre la ruta y el controllers
+ el middleware 'userIsAdmin o jwtValidMDW' (segun corresponda) y cuando llame a la ruta lo primero que ejecuta es el meddleware y valide
+ si todo esta bien que siga y ejecute la funcion del controller
+ )
+
+-> controllers (puedo verificar la autenticacion y el role que recibe )
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE2ODcwMjEzMjl9.Bemb03s_e8VAU7N5Zqmve9Oqv29kVheRUZFvmBDPTyY
+
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE1MTYyMzkwMjJ9.u2MLjyq85EosHa7DlLZbyv_-ga79kaXZYUxMzmKJzrA
+
+ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicGVwZSIsInJvbGUiOiJVc2VyIiwiaWF0IjoxNjg3MDIxMzI5fQ.PAXyrD_iptVNaf0w0C0_RTJbK-MVKDWyFiDgSGqcFM0
